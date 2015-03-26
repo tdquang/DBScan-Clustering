@@ -1,0 +1,6 @@
+# DBScan-Clustering
+# Andrew Elenbogen and Quang Tran
+
+
+We implemented the DBScan algorithm, a density base clustering approach. This algorithm involves the user specifying two values: radius and MinPoints. The algorithm finds all points that have at least MinPoints data points within radius of them. It designates these points Core Points. Then, all points which did not have sufficient surrounding points but are within radius of a Core Point are designated Border points. Finally, the remaining points are assumed to be noise and are removed from the dataset completely. To actually generate the clusters, the algorithm iterates through all Core Points in the data set and places any point that is radius or less from another Core Point into the same cluster as that point. To achieve this simply and quickly, we drew an edge from each Core Point to each other sufficiently close core point, then employed the Floyd–Warshall algorithm on the resulting adjacency matrix.
+The final step of the algorithm is to assign Border Points to clusters. We do this by calculating the distance from each Border Point to the closest point in each existing cluster. The border point is then placed in the cluster with the lowest such distance.
